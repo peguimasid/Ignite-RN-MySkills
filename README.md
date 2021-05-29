@@ -7,8 +7,6 @@
 
 > 🍳 First Rocketseat Ignite - React Native project to learn basics knowledges de React Native
 
-### 🏠 [Click here to see project in production](https://yelpcamp-nextjs-mongodb.vercel.app/)
-
 ## Install
 
 ```sh
