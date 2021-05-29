@@ -5,7 +5,7 @@
   </a>
 </p>
 
-> 🍳 First Rocketseat Ignite - React Native project to learn basics React Native knowledges
+> 🍳 First Rocketseat Ignite - Project to learn basics React Native knowledges
 
 ## Install
 
