@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useEffect } from "react";
+import React, { useCallback, useState, useEffect, FunctionComponent } from "react";
 import {
   Text,
   View,
@@ -12,10 +12,12 @@ import Button from "../../components/Button";
 
 import styles from "./styles";
 
-const Home = () => {
-  const [inputValue, setInputValue] = useState("");
-  const [skills, setSkills] = useState([]);
-  const [skillsCounter, setSkillsCounter] = useState(0);
+type SkillType = string
+
+const Home: FunctionComponent = () => {
+  const [skills, setSkills] = useState<SkillType[]>([]);
+  const [inputValue, setInputValue] = useState<string>("");
+  const [skillsCounter, setSkillsCounter] = useState<number>(0);
 
   const handleAddSkill = useCallback(() => {
     setSkills((prevState) => [...prevState, inputValue]);

@@ -1,13 +1,18 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 
-import { StyleSheet, Text, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, TouchableOpacityProps } from "react-native";
 
-const Button = ({ onPress, children }) => {
+interface ButtonProps extends TouchableOpacityProps {
+  children: string
+}
+
+const Button: FunctionComponent<ButtonProps> = ({ onPress, children, ...rest }) => {
   return (
     <TouchableOpacity
       onPress={onPress}
       style={styles.button}
       activeOpacity={0.8}
+      {...rest}
     >
       <Text style={styles.buttonText}>{children}</Text>
     </TouchableOpacity>
