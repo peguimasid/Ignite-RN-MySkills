@@ -20,19 +20,6 @@ const styles = StyleSheet.create({
     borderRadius: 7,
     marginTop: 30,
   },
-  skillContainer: {
-    backgroundColor: "#1F1E25",
-    padding: 15,
-    marginTop: 20,
-    alignItems: "center",
-    justifyContent: "center",
-    borderRadius: 7,
-  },
-  skillText: {
-    color: "#FFF",
-    fontSize: 22,
-    fontWeight: "500",
-  },
 });
 
 export default styles;

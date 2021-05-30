@@ -9,19 +9,32 @@ import {
 } from "react-native";
 
 import Button from "../../components/Button";
+import SkillCard from "../../components/SkillCard";
 
 import styles from "./styles";
 
-type SkillType = string
+interface ISkill {
+  id: string
+  title: string
+}
 
 const Home: FunctionComponent = () => {
-  const [skills, setSkills] = useState<SkillType[]>([]);
+  const [skills, setSkills] = useState<ISkill[]>([]);
   const [inputValue, setInputValue] = useState<string>("");
   const [skillsCounter, setSkillsCounter] = useState<number>(0);
 
   const handleAddSkill = useCallback(() => {
-    setSkills((prevState) => [...prevState, inputValue]);
+    const data = {
+      id: String(new Date().getTime()),
+      title: inputValue
+    }
+
+    setSkills((prevState) => [...prevState, data]);
     setInputValue("");
+  }, [inputValue]);
+
+  const handleRemoveSkill = useCallback((removedSkillId) => {
+    setSkills((prevState) => prevState.filter(skill => skill.id !== removedSkillId));
   }, [inputValue]);
 
   useEffect(() => {
@@ -47,12 +60,8 @@ const Home: FunctionComponent = () => {
         </Text>
         <FlatList
           data={skills}
-          keyExtractor={(skill) => skill}
-          renderItem={({ item }) => (
-            <TouchableOpacity activeOpacity={0.5} style={styles.skillContainer}>
-              <Text style={styles.skillText}>{item}</Text>
-            </TouchableOpacity>
-          )}
+          keyExtractor={(skill) => skill.id}
+          renderItem={({ item }) => <SkillCard title={item.title} onRemove={() => handleRemoveSkill(item.id)} />}
         />
       </View>
     </>
