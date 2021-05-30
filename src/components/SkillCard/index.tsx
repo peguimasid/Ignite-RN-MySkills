@@ -1,19 +1,19 @@
 import React, { FunctionComponent } from "react";
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-import { StyleSheet, Text, TouchableOpacity, TouchableOpacityProps } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 
-interface ButtonProps extends TouchableOpacityProps {
+interface CardProps {
   title: string
   onRemove(): void
 }
 
-const SkillCard: FunctionComponent<ButtonProps> = ({ title, onRemove, ...rest }) => {
+const SkillCard: FunctionComponent<CardProps> = ({ title, onRemove, ...rest }) => {
   return (
-    <TouchableOpacity activeOpacity={0.5} style={styles.skillContainer} {...rest}>
+    <View style={styles.skillContainer} {...rest}>
       <Text style={styles.skillText}>{title}</Text>
       <Icon onPress={onRemove} name="trash" size={20} color="#FFF" style={styles.deleteIcon} />
-    </TouchableOpacity>
+    </View>
   );
 };
 
