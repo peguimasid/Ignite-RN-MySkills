@@ -4,8 +4,8 @@ import {
   View,
   StatusBar,
   TextInput,
-  TouchableOpacity,
   FlatList,
+  Keyboard,
 } from "react-native";
 
 import Button from "../../components/Button";
@@ -31,6 +31,7 @@ const Home: FunctionComponent = () => {
 
     setSkills((prevState) => [...prevState, data]);
     setInputValue("");
+    Keyboard.dismiss()
   }, [inputValue]);
 
   const handleRemoveSkill = useCallback((removedSkillId) => {
