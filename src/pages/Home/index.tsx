@@ -1,4 +1,9 @@
-import React, { useCallback, useState, useEffect, FunctionComponent } from "react";
+import React, {
+  useCallback,
+  useState,
+  useEffect,
+  FunctionComponent,
+} from "react";
 import {
   Text,
   View,
@@ -14,8 +19,8 @@ import SkillCard from "../../components/SkillCard";
 import styles from "./styles";
 
 interface ISkill {
-  id: string
-  title: string
+  id: string;
+  title: string;
 }
 
 const Home: FunctionComponent = () => {
@@ -26,17 +31,22 @@ const Home: FunctionComponent = () => {
   const handleAddSkill = useCallback(() => {
     const data = {
       id: String(new Date().getTime()),
-      title: inputValue
-    }
+      title: inputValue,
+    };
 
     setSkills((prevState) => [...prevState, data]);
     setInputValue("");
-    Keyboard.dismiss()
+    Keyboard.dismiss();
   }, [inputValue]);
 
-  const handleRemoveSkill = useCallback((removedSkillId) => {
-    setSkills((prevState) => prevState.filter(skill => skill.id !== removedSkillId));
-  }, [inputValue]);
+  const handleRemoveSkill = useCallback(
+    (removedSkillId) => {
+      setSkills((prevState) =>
+        prevState.filter((skill) => skill.id !== removedSkillId)
+      );
+    },
+    [inputValue]
+  );
 
   useEffect(() => {
     setSkillsCounter(skills.length);
@@ -62,7 +72,12 @@ const Home: FunctionComponent = () => {
         <FlatList
           data={skills}
           keyExtractor={(skill) => skill.id}
-          renderItem={({ item }) => <SkillCard title={item.title} onRemove={() => handleRemoveSkill(item.id)} />}
+          renderItem={({ item }) => (
+            <SkillCard
+              title={item.title}
+              onRemove={() => handleRemoveSkill(item.id)}
+            />
+          )}
         />
       </View>
     </>
